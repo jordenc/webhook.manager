@@ -8,7 +8,7 @@
 
 <p data-i18n="settings.webhook_intro"></p>
 
-https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=<span id="device_id2">12345</span>
+<input class="form-control" style="width: 90%" id="url">
 
 <p data-i18n="settings.webhook_extended"></p>
 
@@ -42,7 +42,7 @@ https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=<span id="dev
         Homey.get("device_id", function (err, value) {
             if (value) {
                 document.getElementById('device_id').innerHTML = value;
-                document.getElementById('device_id2').innerHTML = value;
+                document.getElementById('url').value = 'https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=' + value;
             }
         });
     }

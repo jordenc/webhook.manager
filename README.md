@@ -4,7 +4,7 @@ Make it easier to POST information to Homey from external sources, using Webhook
 
 After installing the app, go to the 'Settings' page and see the Webhook Manager settings. It shows the URL you can POST to and example code in PHP with the correct URL for your installation.
 
-For example, in PHP using CURL;
+For example, in PHP using CURL:
 
 ```
 <?php
@@ -27,3 +27,4 @@ For example, in PHP using CURL;
 ?>
 ```
 
+(You only have to fill in the token= part)
