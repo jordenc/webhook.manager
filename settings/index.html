@@ -8,25 +8,29 @@
 
 <p data-i18n="settings.webhook_intro"></p>
 
-<fieldset>
-    <legend data-i18n="settings.title">Webhook settings</legend>
+https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=<span id="device_id2">12345</span>
 
-    <div class="field row">
-        <label for="url">URL</label>
-        <input id="url" type="text" value="" placeholder="https://webhooks.athom.com/webhook/.../"/>
-    </div>
-    <div class="field row">
-        <label for="id">ID</label>
-        <input id="id" type="text" value=""/>
-    </div>
-    <div class="field row">
-        <label for="secret">Secret</label>
-        <input id="secret" type="text" value=""/>
-    </div>
+<p data-i18n="settings.webhook_extended"></p>
 
-</fieldset>
+	<pre><code>
+&lt;?php
+    $data = array("event" => "MyEvent", "data1" => "test1", "data2" => "test2", "data3" => "test3");                                                                    
+    $data_string = json_encode($data);
 
-<button id="save" class="right" data-i18n="settings.save" onclick="saveSettings()"></button>
+    $ch = curl_init('https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=<span id="device_id">12345</span>');
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+        'Content-Type: application/json',                                                                                
+        'Content-Length: ' . strlen($data_string))                                                                       
+    );                                                                                                                   
+
+    $result = curl_exec($ch);
+
+    var_dump ($result);
+?&gt;</code></pre>
 
 <script type="text/javascript">
 
@@ -35,63 +39,12 @@
         Homey.ready();
 
         // Fill input with already stored settings
-        Homey.get("url", function (err, value) {
+        Homey.get("device_id", function (err, value) {
             if (value) {
-                document.getElementById('url').value = value;
+                document.getElementById('device_id').innerHTML = value;
+                document.getElementById('device_id2').innerHTML = value;
             }
         });
-        Homey.get("id", function (err, value) {
-            if (value) {
-                document.getElementById('id').value = value;
-            }
-        });
-        Homey.get("secret", function (err, value) {
-            if (value) {
-                document.getElementById('secret').value = value;
-            }
-        });
-    }
-
-    // Save updated settings
-    function saveSettings() {
-
-        // Store settings for the long term
-        Homey.set("url", document.getElementById('url').value, function (err) {
-            if (err) {
-                // Display failed registration
-                document.getElementById('save').style['background-color'] = 'lightcoral';
-                document.getElementById('save').style['color'] = 'black';
-                document.getElementById('save').innerHTML = __("settings.not_saved");
-            }
-        });
-        Homey.set("id", document.getElementById('id').value, function (err) {
-            if (err) {
-                // Display failed registration
-                document.getElementById('save').style['background-color'] = 'lightcoral';
-                document.getElementById('save').style['color'] = 'black';
-                document.getElementById('save').innerHTML = __("settings.not_saved");
-            }
-        });
-        Homey.set("secret", document.getElementById('secret').value, function (err) {
-            if (err) {
-                // Display failed registration
-                document.getElementById('save').style['background-color'] = 'lightcoral';
-                document.getElementById('save').style['color'] = 'black';
-                document.getElementById('save').innerHTML = __("settings.not_saved");
-            }
-        });
-
-        // Display successful registration
-        document.getElementById('save').style['background-color'] = 'lightgreen';
-        document.getElementById('save').style['color'] = 'white';
-        document.getElementById('save').innerHTML = __("settings.saved");
-
-        setTimeout(function () {
-            // Reset button
-            document.getElementById('save').style['background-color'] = '';
-            document.getElementById('save').style['color'] = 'black';
-            document.getElementById('save').innerHTML = __("settings.save");
-        }, 3000);
     }
 </script>
 

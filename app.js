@@ -1,9 +1,29 @@
 "use strict";
 var webhookID;
 var triggeredEvent;
+var device_id;
 
 var self = module.exports = {
 	init: function () {
+		
+		device_id = Homey.manager('settings').get('device_id');
+		
+		if (device_id) {
+
+			Homey.log ('We still remembered device_id: ' + device_id);
+			
+		} else {
+			
+			var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		
+			device_id = '';
+		    for( var i=0; i < 10; i++ )
+		        device_id += possible.charAt(Math.floor(Math.random() * possible.length));
+        
+			Homey.log('new device_id: ' + device_id);
+			device_id = Homey.manager('settings').set('device_id', device_id);
+			
+		}
 
 		// On triggered flow
 		Homey.manager('flow').on('trigger.event', function (callback, args) {
@@ -18,25 +38,13 @@ var self = module.exports = {
 		});
 
 		// Register initial webhook
-		if (Homey.manager("settings").get("url") && Homey.manager("settings").get("id") && Homey.manager("settings").get("secret")) {
+		if (Homey.env.CLIENT_ID && Homey.env.CLIENT_SECRET) {
 
 			// Register webhook
-			self.registerWebhook(Homey.manager("settings").get("id"), Homey.manager("settings").get("secret"));
+			self.registerWebhook(Homey.env.CLIENT_ID, Homey.env.CLIENT_SECRET);
 
 		}
 
-		// Listen for settings change
-		var counter = 0;
-		Homey.manager('settings').on('set', function () {
-			counter++;
-			if (counter == 3) {
-				// Register new webhook
-				self.registerWebhook(Homey.manager("settings").get('id'), Homey.manager("settings").get('secret'));
-
-				// Reset counter
-				counter = 0;
-			}
-		});
 	},
 	registerWebhook: function (id, secret, callback) {
 
@@ -55,6 +63,7 @@ var self = module.exports = {
 					if (webhookID && webhookID !== id) Homey.manager('cloud').unregisterWebhook(webhookID);
 					
 					Homey.log('registering webhook succeeded');
+					
 					// Return success
 					if (callback)callback(null, true);
 				}
