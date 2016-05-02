@@ -49,7 +49,7 @@ var self = module.exports = {
 	registerWebhook: function (id, secret, callback) {
 
 		// Register webhook
-		Homey.manager('cloud').registerWebhook(id, secret, {device_id: 12345}, self.incomingWebhook,
+		Homey.manager('cloud').registerWebhook(id, secret, {device_id: device_id}, self.incomingWebhook,
 			function (err, result) {
 				if (err || !result) {
 				
