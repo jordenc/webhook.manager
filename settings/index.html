@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+
+<h1 data-i18n="settings.title"></h1>
+
+<p data-i18n="settings.webhook_intro"></p>
+
+<fieldset>
+    <legend data-i18n="settings.title">Webhook settings</legend>
+
+    <div class="field row">
+        <label for="url">URL</label>
+        <input id="url" type="text" value="" placeholder="https://webhooks.athom.com/webhook/.../"/>
+    </div>
+    <div class="field row">
+        <label for="id">ID</label>
+        <input id="id" type="text" value=""/>
+    </div>
+    <div class="field row">
+        <label for="secret">Secret</label>
+        <input id="secret" type="text" value=""/>
+    </div>
+
+</fieldset>
+
+<button id="save" class="right" data-i18n="settings.save" onclick="saveSettings()"></button>
+
+<script type="text/javascript">
+
+    // Initialize Homey
+    function onHomeyReady() {
+        Homey.ready();
+
+        // Fill input with already stored settings
+        Homey.get("url", function (err, value) {
+            if (value) {
+                document.getElementById('url').value = value;
+            }
+        });
+        Homey.get("id", function (err, value) {
+            if (value) {
+                document.getElementById('id').value = value;
+            }
+        });
+        Homey.get("secret", function (err, value) {
+            if (value) {
+                document.getElementById('secret').value = value;
+            }
+        });
+    }
+
+    // Save updated settings
+    function saveSettings() {
+
+        // Store settings for the long term
+        Homey.set("url", document.getElementById('url').value, function (err) {
+            if (err) {
+                // Display failed registration
+                document.getElementById('save').style['background-color'] = 'lightcoral';
+                document.getElementById('save').style['color'] = 'black';
+                document.getElementById('save').innerHTML = __("settings.not_saved");
+            }
+        });
+        Homey.set("id", document.getElementById('id').value, function (err) {
+            if (err) {
+                // Display failed registration
+                document.getElementById('save').style['background-color'] = 'lightcoral';
+                document.getElementById('save').style['color'] = 'black';
+                document.getElementById('save').innerHTML = __("settings.not_saved");
+            }
+        });
+        Homey.set("secret", document.getElementById('secret').value, function (err) {
+            if (err) {
+                // Display failed registration
+                document.getElementById('save').style['background-color'] = 'lightcoral';
+                document.getElementById('save').style['color'] = 'black';
+                document.getElementById('save').innerHTML = __("settings.not_saved");
+            }
+        });
+
+        // Display successful registration
+        document.getElementById('save').style['background-color'] = 'lightgreen';
+        document.getElementById('save').style['color'] = 'white';
+        document.getElementById('save').innerHTML = __("settings.saved");
+
+        setTimeout(function () {
+            // Reset button
+            document.getElementById('save').style['background-color'] = '';
+            document.getElementById('save').style['color'] = 'black';
+            document.getElementById('save').innerHTML = __("settings.save");
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>

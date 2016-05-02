@@ -1,0 +1,9 @@
+{
+  "settings": {
+    "title": "Webhook.Manager Settings",
+    "webhook_intro": "You have to register a <a target='_blank' href='http://developers.athom.com/webhooks/'>webhook</a> first. Copy and paste the Webhook URL, ID and Secret into the fields below. You can use the Webhook URL in your external scripts to trigger events on Homey! <br><br><strong>Make sure that all your recipes that will trigger a flow on Homey have a json encoded body with the following properties: {\"event\":\"your_event_name_here\",\"data1\":\"data_field_1_here\",\"data2\":\"data_field_2_here\",\"data3\":\"data_field_3_here\"}<br/>data1, data2, and data3 are optional.",
+    "save": "Save",
+    "saved": "Webhook registered",
+    "not_saved": "Webhook invalid"
+  }
+}

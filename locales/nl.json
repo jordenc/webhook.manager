@@ -1,0 +1,9 @@
+{
+  "settings": {
+    "title": "Webhook.Manager Instellingen",
+    "webhook_intro": "Maak eerst een <a target='_blank' href='http://developers.athom.com/webhooks/'>webhook</a> aan. Kopieer en plak de Webhook URL, ID en Secret in de onderstaande velden. Je kunt de Webhook URL gebruiken in je externe scripts om events te triggeren op Homey!<br><br><strong>Om vanuit je eigen scripts een flow van Homey te triggeren, zorg je er voor dat ze een json encoded body hebben met de volgende attributen: {\"event\":\"your_event_name_here\",\"data1\":\"informatie_1_hier\",\"data2\":\"informatie_2_hier\",\"data3\":\"informatie_3_hier\"}<br/>data1, data2 en data3 zijn optioneel.",
+    "save": "Opslaan",
+    "saved": "Webhook geregistreerd",
+    "not_saved": "Foutieve Webhook"
+  }
+}
