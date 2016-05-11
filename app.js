@@ -1,40 +1,34 @@
 "use strict";
 var webhookID;
-var triggeredEvent;
 var device_id;
 
 var self = module.exports = {
 	init: function () {
-		
+
 		device_id = Homey.manager('settings').get('device_id');
-		
+
 		if (device_id) {
 
 			Homey.log ('We still remembered device_id: ' + device_id);
-			
+
 		} else {
-			
+
 			var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		
+
 			device_id = '';
 		    for( var i=0; i < 10; i++ )
 		        device_id += possible.charAt(Math.floor(Math.random() * possible.length));
-        
+
 			Homey.log('new device_id: ' + device_id);
 			device_id = Homey.manager('settings').set('device_id', device_id);
-			
+
 		}
 
 		// On triggered flow
-		Homey.manager('flow').on('trigger.event', function (callback, args) {
+		Homey.manager('flow').on('trigger.event', function (callback, args, state) {
 
 			// Check if event triggered is equal to event send in flow card
-			if (args.event === triggeredEvent) {
-				callback(null, true);
-			}
-			else {
-				callback(true, null);
-			}
+			callback( null, args.event === state.event );
 		});
 
 		// Register initial webhook
@@ -52,18 +46,18 @@ var self = module.exports = {
 		Homey.manager('cloud').registerWebhook(id, secret, {device_id: device_id}, self.incomingWebhook,
 			function (err, result) {
 				if (err || !result) {
-				
+
 					Homey.log('registering webhook failed');
-					
+
 					// Return failure
 					if (callback)callback(true, null);
 				}
 				else {
 					// Unregister old webhook
 					if (webhookID && webhookID !== id) Homey.manager('cloud').unregisterWebhook(webhookID);
-					
+
 					Homey.log('registering webhook succeeded');
-					
+
 					// Return success
 					if (callback)callback(null, true);
 				}
@@ -74,16 +68,15 @@ var self = module.exports = {
 	},
 	incomingWebhook: function (args) {
 
-		// Store triggered event
-		triggeredEvent = args.body.event;
-		
-		Homey.log('incoming webhook: ' + triggeredEvent + ' / ' + JSON.stringify(args));
+		Homey.log('incoming webhook: ' + args.body.event + ' / ' + JSON.stringify(args));
 
 		// Trigger event
 		Homey.manager('flow').trigger('event', {
-			data1: args.body.data1,
-			data2: args.body.data2,
-			data3: args.body.data3
+			data1: args.body.data1 || '',
+			data2: args.body.data2 || '',
+			data3: args.body.data3 || ''
+		}, {
+			event: args.body.event
 		});
 	}
 };
