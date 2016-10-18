@@ -68,7 +68,6 @@ var self = module.exports = {
 	},
 	incomingWebhook: function (args) {
 
-
 		if (typeof args.body.event === "undefined" || args.body.event == "") {
 		
 			var event = args.query.event;
