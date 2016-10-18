@@ -2,6 +2,7 @@
   "settings": {
     "title": "Webhook.Manager Settings",
     "webhook_intro": "You can use the following Webhook URL in your external scripts to trigger events on Homey:",
-    "webhook_extended": "<br><br>Make sure that all your POST actions that will trigger a flow on Homey have a json encoded body with the following properties: <strong>{\"event\":\"your_event_name_here\",\"data1\":\"data_field_1_here\",\"data2\":\"data_field_2_here\",\"data3\":\"data_field_3_here\"}</strong><br/>data1, data2, and data3 are optional.<br/><br/>Example PHP code:"
+    "webhook_extended": "<br><br>Make sure that all your POST actions that will trigger a flow on Homey have a json encoded body with the following properties: <strong>{\"event\":\"your_event_name_here\",\"data1\":\"data_field_1_here\",\"data2\":\"data_field_2_here\",\"data3\":\"data_field_3_here\"}</strong><br/>data1, data2, and data3 are optional.<br/><br/>Example PHP code:",
+    "webhook_get": "It is also possible to GET an URL with the event/data1/data2/data3 information, for example: "
   }
 }

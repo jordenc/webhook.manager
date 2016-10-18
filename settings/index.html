@@ -32,6 +32,9 @@
     var_dump ($result);
 ?&gt;</code></pre>
 
+<p data-i18n="settings.webhook_get"></p>
+<input class="form-control" style="width: 90%" id="url2">
+
 <script type="text/javascript">
 
     // Initialize Homey
@@ -43,6 +46,7 @@
             if (value) {
                 document.getElementById('device_id').innerHTML = value;
                 document.getElementById('url').value = 'https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=' + value;
+                document.getElementById('url2').value = 'https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=' + value + '&event=your_event_name_here&data1=data_field_1_here&data2=data_field_2_here&data3=data_field_3_here';
             }
         });
     }

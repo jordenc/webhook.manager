@@ -2,6 +2,7 @@
   "settings": {
     "title": "Webhook.Manager Instellingen",
     "webhook_intro": "Je kunt de Webhook URL gebruiken in je externe scripts om events te triggeren op Homey:",
-    "webhook_extended": "<br><br>Om vanuit je eigen scripts een flow van Homey te triggeren, zorg je er voor dat ze een json encoded body hebben met de volgende attributen: <strong>{\"event\":\"your_event_name_here\",\"data1\":\"informatie_1_hier\",\"data2\":\"informatie_2_hier\",\"data3\":\"informatie_3_hier\"}</strong><br/>data1, data2 en data3 zijn optioneel.<br/><br/>Voorbeeld in PHP: "
+    "webhook_extended": "<br><br>Om vanuit je eigen scripts een flow van Homey te triggeren, zorg je er voor dat ze een json encoded body hebben met de volgende attributen: <strong>{\"event\":\"your_event_name_here\",\"data1\":\"informatie_1_hier\",\"data2\":\"informatie_2_hier\",\"data3\":\"informatie_3_hier\"}</strong><br/>data1, data2 en data3 zijn optioneel.<br/><br/>Voorbeeld in PHP: ",
+    "webhook_get": "Het is ook mogelijk om een URL aan te roepen met de event/data1/data2/data3 gegevens, bijvoorbeeld: "
   }
 }
