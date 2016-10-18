@@ -30,3 +30,11 @@ For example, in PHP using CURL:
 ```
 
 (You only have to fill in the token= part)
+
+# Changelog
+**Version 0.2.2**
+- Webhook now also supports GET command, just call an URL in the form of:
+https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=<token as shown in app>&event=<event name>&data1=<data>&data2=<data>&data3=<data>
+
+**Version 0.2.1**
+- Initial release

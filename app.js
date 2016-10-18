@@ -68,15 +68,32 @@ var self = module.exports = {
 	},
 	incomingWebhook: function (args) {
 
-		Homey.log('incoming webhook: ' + args.body.event + ' / ' + JSON.stringify(args));
+
+		if (typeof args.body.event === "undefined" || args.body.event == "") {
+		
+			var event = args.query.event;
+			var data1 = args.query.data1;
+			var data2 = args.query.data2;
+			var data3 = args.query.data3;
+			
+		} else {
+		
+			var event = args.body.event;
+			var data1 = args.body.data1;
+			var data2 = args.body.data2;
+			var data3 = args.body.data3;
+			
+		}
+		
+		Homey.log('incoming webhook: ' + event + ' / ' + JSON.stringify(args));
 
 		// Trigger event
 		Homey.manager('flow').trigger('event', {
-			data1: args.body.data1 || '',
-			data2: args.body.data2 || '',
-			data3: args.body.data3 || ''
+			data1: data1 || '',
+			data2: data2 || '',
+			data3: data3 || ''
 		}, {
-			event: args.body.event
+			event: event
 		});
 	}
 };
