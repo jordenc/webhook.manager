@@ -31,7 +31,12 @@ For example, in PHP using CURL:
 
 (You only have to fill in the token= part)
 
+**Want to show your appreciation for this app? A donation is possible via http://www.d2c.nl **
+
 # Changelog
+**Version 0.2.3**
+- SDK v2 version
+
 **Version 0.2.2**
 - Webhook now also supports GET command, just call an URL in the form of:
 https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=&lt;token as shown in app&gt;&event=&lt;event name&gt;&data1=&lt;data&gt;&data2=&lt;data&gt;&data3=&lt;data&gt;

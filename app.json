@@ -1,7 +1,8 @@
 {
   "id": "webhook.manager",
-  "version": "0.2.2",
-  "compatibility": ">=0.0.0",
+  "sdk": 2,
+  "version": "0.2.3",
+  "compatibility": ">=1.5.0",
   "category": "internet",
   "name": {
     "en": "Webhook Manager",
@@ -19,6 +20,14 @@
     "small": "assets/images/small.png",
     "large": "assets/images/large.png"
   },
+  "contributing": {
+	    "donate": {
+	        "paypal": {
+	            "email": "info@chamidmedia.nl",
+	            "currency": "EUR"
+	        }
+	    }
+	},
   "permissions": [
   ],
   "speech": [

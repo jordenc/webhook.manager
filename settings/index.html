@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<script type="text/javascript" src="/homey.js" data-origin="settings"></script>
 </head>
 <body>
 
@@ -38,9 +39,10 @@
 <script type="text/javascript">
 
     // Initialize Homey
-    function onHomeyReady() {
+    function onHomeyReady(Homey) {
+        
         Homey.ready();
-
+        
         // Fill input with already stored settings
         Homey.get("device_id", function (err, value) {
             if (value) {
