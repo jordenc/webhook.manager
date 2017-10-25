@@ -34,6 +34,9 @@ For example, in PHP using CURL:
 **Want to show your appreciation for this app? A donation is possible via http://www.d2c.nl **
 
 # Changelog
+**Version 0.2.4**
+- Bugfix (all events were triggered)
+
 **Version 0.2.3**
 - SDK v2 version
 

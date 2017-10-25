@@ -11,9 +11,9 @@ class App extends Homey.App {
 		let eventTrigger = new Homey.FlowCardTrigger('event')
 			.register()
 		    .registerRunListener( (args, state ) => {
-
+				
 		        // If true, this flow should run
-		        return Promise.resolve( args.location === state.location );
+		        return Promise.resolve( args.event === state.event );
 		
 		    })
 		   
@@ -65,13 +65,15 @@ class App extends Homey.App {
 						
 					}
 					
+					this.log('event = ' + event);
+					
 					// trigger a Flow//event: event
 			        eventTrigger
 			        	.trigger({
 			                data1: data1 || '',
 							data2: data2 || '',
 							data3: data3 || ''
-		                }, {event: event})
+		                }, {'event': event})
 		                .then( console.log( 'event triggered') )
 		                .catch( this.error )
 			
