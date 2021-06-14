@@ -28,8 +28,16 @@ For example, in PHP using CURL:
 	var_dump ($result);
 ?>
 ```
-
+In a web browser:
+```
+https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=YOUR_TOKEN&event=MyEvent&data1=test1&data2=test2&data3=test3
+```
+Linux command line (using curl):
+```
+curl -d '{"event":"MyEvent","data1":"test1","data2":"test2","data3":"test3"}' -H "Content-Type: application/json" https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=YOUR_TOKEN
+```
 (You only have to fill in the token= part)
+
 
 **Want to show your appreciation for this app? A donation is possible via http://www.d2c.nl **
 
