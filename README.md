@@ -13,7 +13,7 @@ For example, in PHP using CURL:
 	$data = array("event" => "MyEvent", "data1" => "test1", "data2" => "test2", "data3" => "test3");                                                                    
 	$data_string = json_encode($data);
 	
-	$ch = curl_init('https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=');
+	$ch = curl_init('https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=YOUR_TOKEN');
 	
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
@@ -36,21 +36,5 @@ Linux command line (using curl):
 ```
 curl -d '{"event":"MyEvent","data1":"test1","data2":"test2","data3":"test3"}' -H "Content-Type: application/json" https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=YOUR_TOKEN
 ```
-(You only have to fill in the token= part)
 
-
-**Want to show your appreciation for this app? A donation is possible via http://www.d2c.nl **
-
-# Changelog
-**Version 0.2.4**
-- Bugfix (all events were triggered)
-
-**Version 0.2.3**
-- SDK v2 version
-
-**Version 0.2.2**
-- Webhook now also supports GET command, just call an URL in the form of:
-https://webhooks.athom.com/webhook/57274085acb3bd6d24b3d200/?token=&lt;token as shown in app&gt;&event=&lt;event name&gt;&data1=&lt;data&gt;&data2=&lt;data&gt;&data3=&lt;data&gt;
-
-**Version 0.2.1**
-- Initial release
+Please notice that all fields (event, data1, data2, data3) as well as the token field (replace YOUR_TOKEN) are required.

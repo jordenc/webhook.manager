@@ -1,7 +1,7 @@
 {
   "id": "webhook.manager",
   "sdk": 2,
-  "version": "0.2.4",
+  "version": "0.2.5",
   "compatibility": ">=1.5.0",
   "category": "internet",
   "name": {
@@ -12,26 +12,25 @@
     "en": "Add external values to Homey webhooks",
     "nl": "Voeg waardes toe aan Homey vanuit externe webhooks"
   },
+  "brandColor": "#31302E",
   "author": {
-    "name": "Chamid Media",
-    "email": "info@chamidmedia.nl"
+    "name": "Corbata",
+    "email": "info@corbata.nl"
   },
   "images": {
     "small": "assets/images/small.png",
     "large": "assets/images/large.png"
   },
   "contributing": {
-	    "donate": {
-	        "paypal": {
-	            "email": "info@chamidmedia.nl",
-	            "currency": "EUR"
-	        }
-	    }
-	},
-  "permissions": [
-  ],
-  "speech": [
-  ],
+    "donate": {
+      "paypal": {
+        "email": "info@chamidmedia.nl",
+        "currency": "EUR"
+      }
+    }
+  },
+  "permissions": [],
+  "speech": [],
   "flow": {
     "triggers": [
       {
@@ -51,27 +50,27 @@
           }
         ],
         "tokens": [
-            {
-                "name": "data1",
-                "title": {
-                    "en": "data1",
-                    "nl": "data1"
-                }
-            },
-            {
-                "name": "data2",
-                "title": {
-                    "en": "data2",
-                    "nl": "data2"
-                }
-            },
-            {
-                "name": "data3",
-                "title": {
-                    "en": "data3",
-                    "nl": "data3"
-                }
+          {
+            "name": "data1",
+            "title": {
+              "en": "data1",
+              "nl": "data1"
             }
+          },
+          {
+            "name": "data2",
+            "title": {
+              "en": "data2",
+              "nl": "data2"
+            }
+          },
+          {
+            "name": "data3",
+            "title": {
+              "en": "data3",
+              "nl": "data3"
+            }
+          }
         ]
       }
     ]
