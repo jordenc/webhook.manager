@@ -1,7 +1,7 @@
 {
   "id": "webhook.manager",
   "sdk": 2,
-  "version": "0.2.6",
+  "version": "0.2.7",
   "compatibility": ">=1.5.0",
   "category": "internet",
   "name": {
@@ -17,6 +17,7 @@
     "name": "Corbata",
     "email": "info@corbata.nl"
   },
+  "homeyCommunityTopicId": 50357,
   "images": {
     "small": "assets/images/small.png",
     "large": "assets/images/large.png"
