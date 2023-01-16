@@ -1,8 +1,8 @@
 {
   "id": "webhook.manager",
   "sdk": 3,
-  "version": "1.0.0",
-  "brandColor": "#2fa6d9",
+  "version": "1.0.1",
+  "brandColor": "#31302E",
   "compatibility": ">=5.0.0",
   "category": "internet",
   "name": {
@@ -13,7 +13,6 @@
     "en": "Add external values to Homey webhooks",
     "nl": "Voeg waardes toe aan Homey vanuit externe webhooks"
   },
-  "brandColor": "#31302E",
   "author": {
     "name": "Corbata",
     "email": "info@corbata.nl"
