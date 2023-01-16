@@ -1,8 +1,9 @@
 {
   "id": "webhook.manager",
-  "sdk": 2,
-  "version": "0.2.7",
-  "compatibility": ">=1.5.0",
+  "sdk": 3,
+  "version": "1.0.0",
+  "brandColor": "#2fa6d9",
+  "compatibility": ">=5.0.0",
   "category": "internet",
   "name": {
     "en": "Webhook Manager",
@@ -40,6 +41,10 @@
           "en": "On event",
           "nl": "Als triggered"
         },
+        "titleFormatted": {
+          "en": "On event [[event]]",
+          "nl": "On event [[event]]"
+        },
         "args": [
           {
             "name": "event",
@@ -56,21 +61,24 @@
             "title": {
               "en": "data1",
               "nl": "data1"
-            }
+            },
+            "type": "string"
           },
           {
             "name": "data2",
             "title": {
               "en": "data2",
               "nl": "data2"
-            }
+            },
+            "type": "string"
           },
           {
             "name": "data3",
             "title": {
               "en": "data3",
               "nl": "data3"
-            }
+            },
+            "type": "string"
           }
         ]
       }
