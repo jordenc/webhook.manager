@@ -1,7 +1,7 @@
 {
   "id": "webhook.manager",
   "sdk": 3,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "brandColor": "#31302E",
   "compatibility": ">=5.0.0",
   "category": "internet",

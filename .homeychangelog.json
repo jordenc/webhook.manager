@@ -7,5 +7,8 @@
   },
   "1.0.1": {
     "en": "SDK v3 version"
+  },
+  "1.0.2": {
+    "en": "New form of webhooks"
   }
 }
