@@ -26,14 +26,17 @@ class App extends Homey.App {
 		        device_id += possible.charAt(Math.floor(Math.random() * possible.length));
 
 			this.log('new device_id: ' + device_id);
-			device_id = this.homey.settings.set('device_id', device_id);
+			this.homey.settings.set('device_id', device_id);
 		}
 		
 		// Register initial webhook
 		if (Homey.env.CLIENT_ID && Homey.env.CLIENT_SECRET) {
 
 			// Register webhook
-			this.myWebhook = await this.homey.cloud.createWebhook(Homey.env.CLIENT_ID, Homey.env.CLIENT_SECRET, {device_id: device_id});
+			this.myWebhook = await this.homey.cloud.createWebhook(Homey.env.CLIENT_ID, Homey.env.CLIENT_SECRET, {
+				device_id: device_id,
+				$key: device_id,
+			});
 
 			this.myWebhook
 		        .on('message', args => {
@@ -66,7 +69,7 @@ class App extends Homey.App {
 							data2: data2 || '',
 							data3: data3 || ''
 		                }, {'event': event})
-		                .then( console.log( 'event triggered: ' + event) )
+		                .then(() => this.log('event triggered: ' + event))
 		                .catch( this.error )
 			
 		        })
